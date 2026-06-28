@@ -1,0 +1,402 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gis-blue: #3b82f6;
+  --gis-dark: #1d4ed8;
+  --gis-light: #eff6ff;
+  --gis-green: #10b981;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Topographic background pattern */
+.topo-bg {
+  background-color: #ffffff;
+  background-image:
+    radial-gradient(ellipse 900px 700px at 15% 25%, rgba(59,130,246,0.035) 0%, transparent 70%),
+    radial-gradient(ellipse 700px 900px at 85% 75%, rgba(59,130,246,0.03) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 500px at 50% 50%, rgba(16,185,129,0.02) 0%, transparent 60%),
+    repeating-radial-gradient(circle at 30% 40%, transparent 0px, transparent 60px, rgba(59,130,246,0.018) 60px, rgba(59,130,246,0.018) 61px, transparent 61px, transparent 120px),
+    repeating-radial-gradient(circle at 70% 60%, transparent 0px, transparent 80px, rgba(59,130,246,0.015) 80px, rgba(59,130,246,0.015) 81px, transparent 81px, transparent 160px);
+}
+
+/* Water basin outlines */
+.topo-bg::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='1200' height='800' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='300' cy='400' rx='250' ry='180' fill='none' stroke='rgba(59,130,246,0.025)' stroke-width='1'/%3E%3Cellipse cx='300' cy='400' rx='200' ry='140' fill='none' stroke='rgba(59,130,246,0.02)' stroke-width='1'/%3E%3Cellipse cx='300' cy='400' rx='150' ry='100' fill='none' stroke='rgba(59,130,246,0.015)' stroke-width='1'/%3E%3Cellipse cx='900' cy='300' rx='200' ry='150' fill='none' stroke='rgba(16,185,129,0.02)' stroke-width='1'/%3E%3Cellipse cx='900' cy='300' rx='150' ry='110' fill='none' stroke='rgba(16,185,129,0.015)' stroke-width='1'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+}
+
+.glass-card-blue {
+  background: rgba(239, 246, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(59, 130, 246, 0.12);
+  box-shadow: 0 4px 30px rgba(59, 130, 246, 0.06);
+}
+
+/* Glow border on hover */
+.glow-border {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.glow-border:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1), 0 8px 32px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+/* Lift effect */
+.card-lift {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 0 30px rgba(59, 130, 246, 0.08);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button gradient */
+.btn-gradient {
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-gradient:active {
+  transform: translateY(0);
+}
+
+/* File upload area */
+.file-upload-zone {
+  border: 2px dashed rgba(148, 163, 184, 0.4);
+  transition: all 0.3s ease;
+  background: rgba(248, 250, 252, 0.5);
+}
+
+.file-upload-zone:hover,
+.file-upload-zone.dragover {
+  border-color: rgba(59, 130, 246, 0.5);
+  background: rgba(239, 246, 255, 0.5);
+}
+
+.file-upload-zone.has-file {
+  border-color: rgba(16, 185, 129, 0.5);
+  background: rgba(236, 253, 245, 0.5);
+}
+
+/* Toggle switch */
+.toggle-track {
+  width: 52px;
+  height: 28px;
+  border-radius: 14px;
+  padding: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.toggle-track.off {
+  background: linear-gradient(135deg, #ef4444, #f87171);
+}
+
+.toggle-track.on {
+  background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+.toggle-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toggle-track.off .toggle-thumb {
+  transform: translateX(0);
+}
+
+.toggle-track.on .toggle-thumb {
+  transform: translateX(24px);
+}
+
+/* Segmented control */
+.segment-control {
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 4px;
+  display: inline-flex;
+  gap: 4px;
+}
+
+.segment-btn {
+  padding: 8px 20px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.segment-btn.active {
+  background: white;
+  color: #1d4ed8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.segment-btn:not(.active):hover {
+  color: #334155;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Water flow animation */
+@keyframes waterFlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.water-wave {
+  animation: waterFlow 2s ease-in-out infinite;
+}
+
+.water-wave:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.water-wave:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+/* Loading spinner */
+.gis-loader {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.gis-loader::before,
+.gis-loader::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid transparent;
+}
+
+.gis-loader::before {
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-top-color: #3b82f6;
+  animation: spin 1.2s linear infinite;
+}
+
+.gis-loader::after {
+  top: 8px; left: 8px; right: 8px; bottom: 8px;
+  border-right-color: #06b6d4;
+  animation: spin 1.8s linear infinite reverse;
+}
+
+/* Progress bar */
+.progress-bar {
+  background: linear-gradient(90deg, #3b82f6, #06b6d4, #3b82f6);
+  background-size: 200% 100%;
+  animation: progressShine 2s ease-in-out infinite;
+}
+
+@keyframes progressShine {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Tooltip */
+.tooltip-container {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip-content {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background: #1e293b;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 50;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.tooltip-content::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1e293b;
+}
+
+.tooltip-container:hover .tooltip-content {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Success banner */
+.success-banner {
+  background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(52,211,153,0.08));
+  border: 1px solid rgba(16,185,129,0.2);
+}
+
+/* Input styling */
+.gis-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #1e293b;
+  background: rgba(255,255,255,0.8);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.gis-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background: white;
+}
+
+.gis-input::placeholder {
+  color: #94a3b8;
+}
+
+/* Table styling */
+.gis-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.gis-table th {
+  background: #f8fafc;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.gis-table td {
+  padding: 8px 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.gis-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Smooth page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.4s ease;
+}
+
+/* Stats counter animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stat-number {
+  animation: countUp 0.6s ease-out forwards;
+}
+
+/* Navbar scroll effect */
+.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
