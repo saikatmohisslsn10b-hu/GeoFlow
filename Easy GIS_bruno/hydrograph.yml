@@ -1,0 +1,27 @@
+info:
+  name: hydrograph
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: http://127.0.0.1:8001/hydrograph
+  body:
+    type: multipart-form
+    data:
+      - name: station_name
+        type: text
+        value: ""
+      - name: title
+        type: text
+        value: chudgyaaa
+      - name: station_id
+        type: text
+        value: "08174700"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

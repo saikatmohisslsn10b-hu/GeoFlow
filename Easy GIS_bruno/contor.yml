@@ -1,0 +1,35 @@
+info:
+  name: contor
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: http://127.0.0.1:8001/contour-map
+  body:
+    type: multipart-form
+    data:
+      - name: cn_file
+        type: file
+        value:
+          - C:\Users\Saikat Mohis\Downloads\curve_number_data.tif
+      - name: watershed_zip
+        type: file
+        value: []
+      - name: subwatershed_zip
+        type: file
+        value:
+          - C:\Users\Saikat Mohis\Downloads\Subwatersheds.zip
+      - name: title
+        type: text
+        value: balllll ...chireche ....
+      - name: Sheds
+        type: text
+        value: subwatersheds
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

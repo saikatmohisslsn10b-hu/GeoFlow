@@ -1,0 +1,32 @@
+info:
+  name: curve_no
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://127.0.0.1:8001/curve-number
+  body:
+    type: multipart-form
+    data:
+      - name: lulc_file
+        type: file
+        value:
+          - C:\Users\Saikat Mohis\Desktop\IIT-KGP_NEW\curve_no\Guadalupe_LULC_Final.tif
+      - name: soil_file
+        type: file
+        value:
+          - C:\Users\Saikat Mohis\Desktop\IIT-KGP_NEW\curve_no\Guadalupe_Soil_Aligned.tif
+      - name: title
+        type: text
+        value: gand mara
+      - name: TIF
+        type: text
+        value: no
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

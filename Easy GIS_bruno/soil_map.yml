@@ -1,0 +1,28 @@
+info:
+  name: soil_map
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://127.0.0.1:8001/soil
+  body:
+    type: multipart-form
+    data:
+      - name: file
+        type: file
+        value:
+          - C:\Users\Saikat Mohis\Desktop\IIT-KGP_NEW\curve_no\Guadalupe_Soil_Aligned.tif
+      - name: class_names
+        type: text
+        value: '{"101234":"Clay Soil","201234":"Sandy Soil","301234":"Mud / Silt Soil"}'
+      - name: title
+        type: text
+        value: pond mara
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

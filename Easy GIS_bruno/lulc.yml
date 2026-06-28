@@ -1,0 +1,28 @@
+info:
+  name: lulc
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: http://127.0.0.1:8001/lulc
+  headers:
+    - name: ""
+      value: ""
+  body:
+    type: multipart-form
+    data:
+      - name: file
+        type: file
+        value:
+          - C:\Users\Saikat Mohis\Desktop\IIT-KGP_NEW\curve_no\Guadalupe_LULC_Final.tif
+      - name: title
+        type: text
+        value: fuckkkkkk
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
