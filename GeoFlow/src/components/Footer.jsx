@@ -10,7 +10,7 @@ export default function Footer() {
               <Map className="w-4 h-4 text-white" />
             </div>
             <div>
-              <p className="font-bold text-slate-800">Easy-GIS</p>
+              <p className="font-bold text-slate-800">GeoFlow</p>
               <p className="text-xs text-slate-500">Beginner Friendly GIS Platform</p>
             </div>
           </div>
@@ -18,7 +18,7 @@ export default function Footer() {
             Developed for Hydrology and Watershed Analysis
           </p>
           <p className="text-xs text-slate-400">
-            &copy; {new Date().getFullYear()} Easy-GIS. All rights reserved.
+            &copy; {new Date().getFullYear()} GeoFlow. All rights reserved.
           </p>
         </div>
       </div>

@@ -35,7 +35,7 @@ export default function Navbar() {
               <Map className="w-5 h-5 text-white" />
             </div>
             <span className={`text-xl font-bold tracking-tight ${!scrolled && isLanding ? 'text-white' : 'text-slate-800'}`}>
-              Easy-GIS
+              GeoFlow
             </span>
           </Link>
 
