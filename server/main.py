@@ -19,6 +19,8 @@ import os
 
 app = FastAPI()
 
+# Ensure outputs directory exists
+os.makedirs("outputs", exist_ok=True)
 app.mount("/outputs", StaticFiles(directory="outputs"), name="outputs")
 
 @app.post("/soil")
