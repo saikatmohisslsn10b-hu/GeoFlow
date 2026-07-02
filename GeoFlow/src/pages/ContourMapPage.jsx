@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Mountain } from 'lucide-react';
 import ToolPageLayout from '../components/ToolPageLayout';
 import FileUpload from '../components/FileUpload';
@@ -16,6 +16,8 @@ const helpSteps = [
 ];
 
 export default function ContourMapPage() {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
   const [demFile, setDemFile] = useState(null);
   const [watershedFile, setWatershedFile] = useState(null);
   const [subwatershedFile, setSubwatershedFile] = useState(null);
@@ -81,7 +83,7 @@ export default function ContourMapPage() {
       isLoading={loading}
       isSuccess={success}
     >
-      <div className="space-y-6">
+      <div className="space-y-6 text-slate-200">
         <FileUpload
           label="DEM Raster"
           tooltip="Digital Elevation Model raster file in GeoTIFF format."
@@ -109,18 +111,18 @@ export default function ContourMapPage() {
         />
 
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">Map Title</label>
+          <label className="block text-sm font-medium text-slate-300 mb-2">Map Title</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="gis-input"
+            className="gis-input bg-slate-800 text-white border-slate-600 placeholder-slate-500"
             placeholder="e.g. Contour Map - Basin A"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-3">Sheds Selection</label>
+          <label className="block text-sm font-medium text-slate-300 mb-3">Sheds Selection</label>
           <SegmentedControl
             options={['Whole Basin', 'Watershed', 'Subwatershed']}
             value={shedType}

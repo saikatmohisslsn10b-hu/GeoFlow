@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Satellite } from 'lucide-react';
 import ToolPageLayout from '../components/ToolPageLayout';
 import FileUpload from '../components/FileUpload';
@@ -21,6 +21,8 @@ const helpSteps = [
 ];
 
 export default function LULCMapPage() {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState('');
   const [rows, setRows] = useState([
@@ -98,7 +100,7 @@ export default function LULCMapPage() {
       isLoading={loading}
       isSuccess={success}
     >
-      <div className="space-y-6">
+      <div className="space-y-6 text-slate-200">
         <FileUpload
           label="LULC Raster File"
           tooltip="Land Use Land Cover raster file in GeoTIFF format."
@@ -108,7 +110,7 @@ export default function LULCMapPage() {
         />
 
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">
+          <label className="block text-sm font-medium text-slate-300 mb-2">
             Map Title
             <Tooltip text="Optional title for the output map." />
           </label>
@@ -116,13 +118,13 @@ export default function LULCMapPage() {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="gis-input"
+            className="gis-input bg-slate-800 text-white border-slate-600 placeholder-slate-500"
             placeholder="e.g. LULC Classification 2024"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">Land Cover Categories</label>
+          <label className="block text-sm font-medium text-slate-300 mb-2">Land Cover Categories</label>
           <EditableTable columns={columns} rows={rows} onChange={setRows} addLabel="Add Category" />
         </div>
 

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Layers } from 'lucide-react';
 import ToolPageLayout from '../components/ToolPageLayout';
 import FileUpload from '../components/FileUpload';
@@ -21,6 +21,8 @@ const helpSteps = [
 ];
 
 export default function SoilMapPage() {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState('');
   const [rows, setRows] = useState([
@@ -97,7 +99,7 @@ export default function SoilMapPage() {
       isLoading={loading}
       isSuccess={success}
     >
-      <div className="space-y-6">
+      <div className="space-y-6 text-slate-200">
         <FileUpload
           label="Soil Raster File"
           tooltip="Soil classification raster file in GeoTIFF format."
@@ -107,7 +109,7 @@ export default function SoilMapPage() {
         />
 
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">
+          <label className="block text-sm font-medium text-slate-300 mb-2">
             Map Title
             <Tooltip text="Optional title displayed on the generated map." />
           </label>
@@ -115,13 +117,13 @@ export default function SoilMapPage() {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="gis-input"
+            className="gis-input bg-slate-800 text-white border-slate-600 placeholder-slate-500"
             placeholder="e.g. Watershed Soil Classification"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">Soil Class Definitions</label>
+          <label className="block text-sm font-medium text-slate-300 mb-2">Soil Class Definitions</label>
           <EditableTable columns={columns} rows={rows} onChange={setRows} addLabel="Add Row" />
         </div>
 

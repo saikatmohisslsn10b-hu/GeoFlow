@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Waves } from 'lucide-react';
 import ToolPageLayout from '../components/ToolPageLayout';
 import HelpSection from '../components/HelpSection';
@@ -15,6 +15,8 @@ const helpSteps = [
 ];
 
 export default function HydrographPage() {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
   const [stationId, setStationId] = useState('');
   const [stationName, setStationName] = useState('');
   const [stateCode, setStateCode] = useState('');
@@ -82,12 +84,12 @@ export default function HydrographPage() {
       waterTheme={true}
       loadingMessage="Fetching USGS Data & Generating Hydrograph..."
     >
-      <div className="space-y-6">
+      <div className="space-y-6 text-slate-200">
         {/* Water theme accent */}
         <div className="h-1 w-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 opacity-50" />
 
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">
+          <label className="block text-sm font-medium text-slate-300 mb-2">
             Station ID
             <Tooltip text="Unique USGS monitoring station number." />
           </label>
@@ -95,32 +97,32 @@ export default function HydrographPage() {
             type="text"
             value={stationId}
             onChange={(e) => setStationId(e.target.value)}
-            className="gis-input"
+            className="gis-input bg-slate-800 text-white border-slate-600 placeholder-slate-500"
             placeholder="e.g. 08330000"
           />
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="flex-1 h-px bg-slate-200" />
+          <div className="flex-1 h-px bg-slate-600" />
           <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">OR</span>
-          <div className="flex-1 h-px bg-slate-200" />
+          <div className="flex-1 h-px bg-slate-600" />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">
+          <label className="block text-sm font-medium text-slate-300 mb-2">
             Station Name
           </label>
           <input
             type="text"
             value={stationName}
             onChange={(e) => setStationName(e.target.value)}
-            className="gis-input"
+            className="gis-input bg-slate-800 text-white border-slate-600 placeholder-slate-500"
             placeholder="e.g. Colorado River at Austin"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">
+          <label className="block text-sm font-medium text-slate-300 mb-2">
             State Code
             <Tooltip text="Two-letter US state code (e.g., TX, CA, NY)." />
           </label>
@@ -128,14 +130,14 @@ export default function HydrographPage() {
             type="text"
             value={stateCode}
             onChange={(e) => setStateCode(e.target.value.toUpperCase())}
-            className="gis-input uppercase"
+            className="gis-input uppercase bg-slate-800 text-white border-slate-600 placeholder-slate-500"
             placeholder="e.g. TX"
             maxLength={2}
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">
+          <label className="block text-sm font-medium text-slate-300 mb-2">
             Map Title
             <Tooltip text="Optional title for the hydrograph." />
           </label>
@@ -143,7 +145,7 @@ export default function HydrographPage() {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="gis-input"
+            className="gis-input bg-slate-800 text-white border-slate-600 placeholder-slate-500"
             placeholder="e.g. Streamflow Hydrograph - Station 08330000"
           />
         </div>
