@@ -75,6 +75,7 @@ export default function ContourMapPage() {
           steps={helpSteps}
           infoBox="Contour maps represent elevation changes using contour lines."
           onShowSample={handleSample}
+          videoUrl="https://www.youtube.com/watch?v=sTojAt25hi0"
         />
       }
       sampleButton={handleSample}

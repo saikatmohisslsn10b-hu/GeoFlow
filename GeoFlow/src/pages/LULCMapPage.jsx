@@ -92,6 +92,7 @@ export default function LULCMapPage() {
           title="Need Help? How to Generate a LULC Map"
           steps={helpSteps}
           onShowSample={handleSample}
+          videoUrl="https://www.youtube.com/watch?v=XVzQnnKbI08"
         />
       }
       sampleButton={handleSample}

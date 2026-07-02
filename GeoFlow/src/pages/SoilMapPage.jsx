@@ -91,6 +91,7 @@ export default function SoilMapPage() {
           title="Need Help? How to Generate a Soil Map"
           steps={helpSteps}
           onShowSample={handleSample}
+          videoUrl="https://www.youtube.com/watch?v=n2VkVRhIqzc"
         />
       }
       sampleButton={handleSample}

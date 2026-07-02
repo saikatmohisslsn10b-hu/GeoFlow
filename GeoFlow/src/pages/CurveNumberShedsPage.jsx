@@ -74,6 +74,7 @@ export default function CurveNumberShedsPage() {
           title="Need Help? How to Generate a Curve Number Sheds Map"
           steps={helpSteps}
           onShowSample={handleSample}
+          videoUrl="https://www.youtube.com/watch?v=XOCPdVCSAPc"
         />
       }
       sampleButton={handleSample}

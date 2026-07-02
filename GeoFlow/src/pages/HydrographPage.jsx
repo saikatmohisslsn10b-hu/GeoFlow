@@ -74,6 +74,7 @@ export default function HydrographPage() {
           steps={helpSteps}
           infoBox="Hydrographs show streamflow variation over time."
           onShowSample={handleSample}
+          videoUrl="https://www.youtube.com/watch?v=XZLmGgNSAfQ"
         />
       }
       sampleButton={handleSample}

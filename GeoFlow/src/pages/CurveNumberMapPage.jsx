@@ -77,6 +77,7 @@ export default function CurveNumberMapPage() {
           steps={helpSteps}
           infoBox="Curve Number maps combine Soil and LULC information to estimate runoff potential."
           onShowSample={handleSample}
+          videoUrl="https://www.youtube.com/watch?v=qsZUwAKUvog"
         />
       }
       sampleButton={handleSample}
