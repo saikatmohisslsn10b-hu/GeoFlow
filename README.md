@@ -1,7 +1,9 @@
 # GeoFlow: Geospatial Analysis & Hydrological Modeling System
 
 ## Abstract
-GeoFlow is a comprehensive web-based tool designed to perform rapid geospatial and hydrological modeling. It seamlessly integrates a modern React frontend with a high-performance Python (FastAPI) backend. The platform allows researchers, students, and engineers to upload raster data (GeoTIFFs) and shapefiles to dynamically generate Soil Classification Maps, Land Use Land Cover (LULC) Maps, SCS Curve Number Maps, Contour Maps, and real-time Streamflow Hydrographs using USGS data. 
+GeoFlow is a web-based GIS tool designed to simplify geospatial and hydrological modeling. It is built specifically for beginners who are new to GIS and want to avoid the complexity of professional tools like QGIS. With GeoFlow, users can easily generate hydrological maps of a river basin by simply uploading a GeoTIFF (.tif) file to the platform. To make the learning process even smoother, GeoFlow is accompanied by a hands-on YouTube playlist that guides users step-by-step, helping them understand both the workflow.
+
+**YouTube Tutorial**: https://www.youtube.com/watch?v=XVzQnnKbI08&list=PLZWgj2-5KcSU
 
 ---
 
@@ -102,4 +104,8 @@ Follow these instructions to run the full application locally on your machine.
 ---
 
 ## Conclusion
-GeoFlow effectively bridges the gap between complex GIS Python libraries and user-friendly web interfaces. By leveraging FastAPI for rapid, asynchronous processing and React for a reactive user interface, the system provides a robust environment for generating vital hydrological maps and data visualizations on the fly. Whether computing runoff curve numbers or visualizing USGS streamflows, GeoFlow offers a highly capable and extensible foundation for geospatial analysis.
+GeoFlow is build to make geospatial and hydrological analysis accessible without requiring users to learn complex GIS software. Instead of working directly with Python GIS libraries and desktop applications, users can perform common workflows through a simple web interface.
+
+we chose a web-based architecture instead of a traditional desktop application so the platform can be deployed on a central server and accessed from anywhere. This means users don't need a powerful computer or a complicated local GIS setup—everything runs on the server, and they only need a web browser to use the application.
+
+The project is designed to be easy to extend, and we plan to keep adding new geospatial models and analysis tools over time. If you find GeoFlow useful, feel free to fork the repository, add new features, fix bugs, or contribute in any way. Contributions, suggestions, and pull requests are always welcome.
