@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -10,10 +11,15 @@ import CurveNumberMapPage from './pages/CurveNumberMapPage';
 import CurveNumberShedsPage from './pages/CurveNumberShedsPage';
 import ContourMapPage from './pages/ContourMapPage';
 import HydrographPage from './pages/HydrographPage';
+import FloatingChatbot from './components/FloatingChatbot';
+import DeploymentNotice from './components/DeploymentNotice';
 
 function App() {
   const location = useLocation();
   const isLanding = location.pathname === '/';
+  // This state is initialized only when the SPA first loads, so closing the notice
+  // keeps it closed during normal client-side navigation.
+  const [isDeploymentNoticeOpen, setIsDeploymentNoticeOpen] = useState(() => isLanding);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -41,6 +47,11 @@ function App() {
         </AnimatePresence>
       </main>
       {!isLanding && <Footer />}
+      <FloatingChatbot />
+      <DeploymentNotice
+        isOpen={isDeploymentNoticeOpen}
+        onClose={() => setIsDeploymentNoticeOpen(false)}
+      />
     </div>
   );
 }
